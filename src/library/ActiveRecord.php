@@ -31,6 +31,28 @@
 class ActiveRecord {
 
 	/**
+	 * Set up a new ActiveRecord object.
+	 *
+	 * New objects can be instantiated as empty (pass no construction
+	 * parameter) or pre-set with attributes but not yet saved.
+	 *
+	 * @param  array $attributes
+	 */
+	public function __construct(array $attributes = array()) {
+		
+	}
+
+	/**
+	 * Create one or more new ActiveRecord objects and save it.
+	 *
+	 * @param  array $attributes
+	 * @return array|ActiveRecord
+	 */
+	public static function create() {
+
+	}
+
+	/**
 	 * Find operates with four different retrieval approaches:
 	 *
 	 * Find by id - (1), (1, 5, 6), ([5, 6, 10]). Throws RecordNotFound.
