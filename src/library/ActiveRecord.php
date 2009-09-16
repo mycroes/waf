@@ -34,11 +34,13 @@ class ActiveRecord {
 	 * Find operates with four different retrieval approaches:
 	 *
 	 * Find by id - (1), (1, 5, 6), ([5, 6, 10]). Throws RecordNotFound.
-	 * Find first - 
-	 * Find last -
-	 * Find all -
+	 * Find first - Returns the first matched record or null when not found. 
+	 * Find last - Returns the last matched record or null when not found.
+	 * Find all - Return all records, or an empty array when there is no match.
 	 *
-	 * @param  [int ...]|array|string
+	 * @param  [int, ...]|array|string
+	 * @param  array $options
+	 * @return ActiveRecord|array|null
 	 */
 	public static function find() {
 		$args = func_get_args();
@@ -60,7 +62,7 @@ class ActiveRecord {
 	}
 
 	protected static function _find_every($options) {
-
+		
 	}
 
 	protected static function _find_from_ids($args, $options) {
@@ -78,7 +80,7 @@ class ActiveRecord {
 	
 
 	/**
-	 * Convenience wrapper for find('first, *args).
+	 * Convenience wrapper for find('first', args).
 	 *
 	 * You can pass in all the same arguments to this method as you can to
 	 * find('first').
@@ -87,5 +89,14 @@ class ActiveRecord {
 		return self::find('first', func_get_args());
 	}
 
+	/**
+	 * Convenience wrapper for find('last', args).
+	 *
+	 * You can pass in all the same arguments to this method as you can to
+	 * find('first').
+	 */
+	public static function last() {
+		return self::find('last', func_get_args());
+	}
 
 }
